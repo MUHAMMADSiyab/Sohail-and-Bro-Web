@@ -1,11 +1,47 @@
 const http = require("http");
+const fs = require("fs");
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
-  console.log(req);
-  res.setHeader("Content-Type", "text/html");
-  res.write("<h1>Hello World</h1>");
-  res.end();
+
+  // File System
+  // fs.readFile("index.html", (err, data) => {
+  //   if (err) throw err;
+
+  //   res.setHeader("Content-Type", "text/html");
+
+  //   res.write(data);
+
+  //   res.end();
+  // });
+
+  // fs.writeFile("demo.txt", "Some dummy text", (err) => {
+  //   if (err) throw err;
+
+  //   res.end();
+  // });
+
+  // fs.appendFile("demo.txt", " Another text inserted", (err) => {
+  //   if (err) throw err;
+
+  //   res.end();
+  // });
+
+  // fs.rename("demo.txt", "demo-one.txt", (err) => {
+  //   res.end();
+  // });
+
+  // fs.copyFile("index.html", "public/index.html", (err) => {
+  //   res.end();
+  // });
+
+  fs.mkdir("cool", () => {
+    res.end();
+  });
+
+  // fs.unlink("demo-one.txt", (err) => {
+  //   res.end();
+  // });
 });
 
 const PORT = 3000;
