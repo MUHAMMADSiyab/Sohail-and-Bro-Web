@@ -4,11 +4,14 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use((req, res, next) => {
-  req.body.name = req.body.name.toUpperCase();
-  console.log(Date.now());
-  next();
-});
+app.set("views", __dirname + "/views");
+app.set("view engine", "pug");
+
+// app.use((req, res, next) => {
+//   req.body.name = req.body.name.toUpperCase();
+//   console.log(Date.now());
+//   next();
+// });
 
 const projectRoutes = require("./routes/projects");
 const userRoutes = require("./routes/users");
