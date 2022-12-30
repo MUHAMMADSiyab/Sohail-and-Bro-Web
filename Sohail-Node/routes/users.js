@@ -1,14 +1,28 @@
 const express = require("express");
+const mysql = require("mysql");
+
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  const users = [
-    { id: 1, name: "Mr John" },
-    { id: 2, name: "Sara Smith" },
-    { id: 3, name: "Kim" },
-    { id: 4, name: "Brad" },
-  ];
-  return res.render("users", { users });
+  const db = mysql.createConnection({
+    host: "localhost",
+    user: "admin",
+    password: "password",
+    database: "nsms",
+  });
+
+  db.connect();
+
+  db.query(
+    "SELECT id, name, email FROM users LIMIT 50",
+    (err, users, fields) => {
+      if (err) throw err;
+
+      return res.render("users", { users });
+    }
+  );
+
+  db.end();
 });
 
 module.exports = router;
