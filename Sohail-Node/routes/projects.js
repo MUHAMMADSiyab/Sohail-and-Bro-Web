@@ -1,9 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
+const db = require("../db");
 
-router.get("/", (req, res) => {
-  return res.send(`Projects route`);
+router.get("/", async (req, res) => {
+  const projectsCollection = db.getCollection("projects");
+
+  const projects = await projectsCollection.find().toArray();
+
+  return res.json({ data: projects });
 });
 
 router.get("/:id", (req, res) => {

@@ -1,5 +1,18 @@
 const express = require("express");
 const app = express();
+const db = require("./db");
+
+app.use((req, res, next) => {
+  db.connectToServer((err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Database connected");
+    }
+
+    next();
+  });
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
