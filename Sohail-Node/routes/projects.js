@@ -14,7 +14,14 @@ router.get("/test", async (req, res) => {
   const projects = await collection("projects")
     // .find({ budget: { $nin: [1500, 3500, 650], $lt: 2000 } })
     // .find({ $or: [{ budget: { $lt: 2000 } }, { budget: { $eq: 3500 } }] })
-    .find({ developers: { $exists: true } })
+    // .find({ developers: { $exists: true } })
+    .find({
+      // name: { $regex: /^c/, $options: "i" },
+      // name: { $regex: /M$/, $options: "i" },
+      // name: { $regex: /g System/, $options: "im" },
+      // name: { $in: [/^t/i, /m$/i] },
+      name: { $regex: /^[a-zA-Z ]+$/i },
+    })
     .toArray();
 
   return res.json({ data: projects });
