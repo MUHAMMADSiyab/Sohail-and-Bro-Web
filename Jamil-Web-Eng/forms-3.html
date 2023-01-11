@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Forms</title>
+  </head>
+  <body>
+    <form>
+      <p>Select Hobbies</p>
+
+      <input type="checkbox" id="cricket" name="cricket" value="cricket" />
+      <label for="cricket">Cricket</label>
+
+      <input type="checkbox" id="hockey" name="hockey" value="hockey" />
+      <label for="hockey">Hockey</label>
+
+      <input type="checkbox" id="football" name="football" value="football" />
+      <label for="football">Football</label>
+
+      <br /><br />
+
+      <p>Select Gender</p>
+
+      <input type="radio" id="male" name="gender" value="male" checked />
+      <label for="male">Male</label>
+
+      <input type="radio" id="female" name="gender" value="female" />
+      <label for="female">Female</label>
+
+      <br /><br />
+
+      <select name="city" id="city" required>
+        <option value="">Select City</option>
+        <option value="Karachi">Karachi</option>
+        <option value="Lahore" selected>Lahore</option>
+        <option value="Islamabad">Islamabad</option>
+        <option value="Quetta">Quetta</option>
+        <option value="Sialkot">Sialkot</option>
+        <option value="Peshawar">Peshawar</option>
+        <option value="Rawalpindi">Rawalpindi</option>
+      </select>
+
+      <br /><br />
+
+      <textarea
+        rows="10"
+        cols="100"
+        placeholder="Enter your comment"
+        readonly
+      ></textarea>
+
+      <br /><br />
+
+      <input type="hidden" name="user_id" value="klsaud8sad9sa892" />
+
+      <input type="submit" value="Submit Form" />
+    </form>
+  </body>
+</html>
