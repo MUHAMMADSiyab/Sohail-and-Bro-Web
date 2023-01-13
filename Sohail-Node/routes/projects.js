@@ -22,9 +22,26 @@ router.get("/test", async (req, res) => {
       // name: { $in: [/^t/i, /m$/i] },
       name: { $regex: /^[a-zA-Z ]+$/i },
     })
+    // .explain();
     .toArray();
 
   return res.json({ data: projects });
+});
+
+router.get("/sort", async (req, res) => {
+  // const projects = await collection("projects")
+  //   .aggregate([
+  //     { $match: { name: /Sc/ } },
+  //     { $group: { _id: null, totalBudget: { $avg: "$budget" } } },
+  //   ])
+  //   .toArray();
+
+  const projects = await collection("projects").distinct("budget");
+  // .find()
+  // .sort({ budget: -1 })
+  // .toArray();
+
+  return res.json({ projects });
 });
 
 router.get("/:id", async (req, res) => {
