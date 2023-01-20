@@ -1,5 +1,6 @@
 const express = require("express");
 const mysql = require("mysql");
+const path = require("path");
 const multer = require("multer");
 
 const router = express.Router();
@@ -43,10 +44,35 @@ const storage = multer.diskStorage({
     cb(null, fileName);
   },
 });
-const upload = multer({ storage });
+const upload = multer({
+  storage,
+  limits: { fileSize: 100000 },
+  fileFilter: function (req, file, cb) {
+    const extension = path.extname(file.originalname); // .jpg .png
+    const allowList = [".jpg", ".png", ".jpeg", ".gif"];
 
-router.post("/upload_photo", upload.single("photo"), (req, res, next) => {
-  return res.json({ data: req.file });
+    if (!allowList.includes(extension)) {
+      cb(new Error("Only image files are allowerd"));
+    } else {
+      cb(null, true);
+    }
+  },
+});
+
+const uploadHandler = upload.single("photo");
+
+router.post("/upload_photo", (req, res) => {
+  uploadHandler(req, res, function (err) {
+    if (err) {
+      if (err.code === "LIMIT_FILE_SIZE") {
+        return res.status(422).json({ msg: "File size is too large" });
+      } else if (!err.code) {
+        return res.status(422).json({ msg: "Only image files are allowed" });
+      }
+    }
+
+    return res.json({ success: "Uploaded" });
+  });
 });
 
 module.exports = router;
