@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Details, Pre and Fieldset Tags</title>
+  </head>
+  <body>
+    <!-- caniuse.com -->
+    <details open>
+      <summary>Click me to toggle</summary>
+
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum optio
+        laboriosam natus voluptate ex odio veniam earum, voluptatibus, sit nemo
+        consequuntur doloremque unde explicabo perferendis id qui numquam illo
+        omnis. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Nesciunt, saepe! Nemo laudantium hic voluptatum autem quidem praesentium
+        deleniti atque corporis similique eaque asperiores neque eligendi
+        magnam, porro modi quo corrupti! Lorem ipsum dolor sit amet consectetur
+        adipisicing elit. Dicta obcaecati minus nesciunt praesentium consequatur
+        animi incidunt rem magni omnis unde. Autem veritatis aut odio fugit sed
+        incidunt eaque asperiores corporis.
+      </p>
+    </details>
+
+    <fieldset>
+      <legend><h2>User Login</h2></legend>
+      <input type="email" name="email" id="email" /> <br />
+      <br />
+      <input type="password" name="password" id="password" /> <br />
+      <br />
+      <input type="submit" value="Login" />
+    </fieldset>
+
+    <pre>
+        Item
+        Item 
+        Item
+    </pre>
+
+
+<pre>
+<code>
+async function getUsers() {
+    const res = await axios.post('/api/users/all');
+    console.log(res.data);
+}
+</code>
+
+<pre>
+<code>
+&lt;input type="date" id="date"&gt;
+&lt;input type="submit" value="Submit Form"&gt;
+</code>
+</pre>
+</pre>
+  </body>
+</html>
