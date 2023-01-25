@@ -1,29 +1,37 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 
-const db = require('./db');
+const db = require("./db");
 
 // models
-const User = require('./models/User');
+// const User = require('./models/User');
+const Customer = require("./models/Customer");
+const Order = require("./models/Order");
 
 db();
 
-app.get('/', async (req, res) => {
+// app.get('/', async (req, res) => {
 
-    // const newUser = new User();
+//     // const newUser = new User();
 
-    // newUser.name = "Kamran Khan";
-    // newUser.email = "kamran@yahoo.com"
+//     // newUser.name = "Kamran Khan";
+//     // newUser.email = "kamran@yahoo.com"
 
-    // await newUser.save();
+//     // await newUser.save();
 
-    // const user = await User.findById("63d00460b6d4b2085f3d2a1e");
-    // const user = await User.findOne({ email: "kamran@yahoo.com" })
-    // .select('-email');
+//     // const user = await User.findById("63d00460b6d4b2085f3d2a1e");
+//     // const user = await User.findOne({ email: "kamran@yahoo.com" })
+//     // .select('-email');
 
-    const updatedUser = await User.findByIdAndUpdate("63d00460b6d4b2085f3d2a1e", { email: "kamrankhan@gmail.com" }, { new: true })
+//     const updatedUser = await User.findByIdAndUpdate("63d00460b6d4b2085f3d2a1e", { email: "kamrankhan@gmail.com" }, { new: true })
 
-    return res.json({ updatedUser })
-})
+//     return res.json({ updatedUser })
+// })
+
+app.get("/", async (req, res) => {
+  const orders = await Order.find().populate("customer", ["name", "email"]);
+
+  return res.json(orders);
+});
 
 app.listen(3000);
