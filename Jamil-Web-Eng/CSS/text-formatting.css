@@ -1,0 +1,22 @@
+h1 {
+    color: blueviolet;
+    font-size: 2in;
+    /* text-align: center; */
+    text-transform: capitalize;
+    font-weight: 700;
+    font-family: sans-serif;
+    text-decoration: none;
+    font-style: normal;
+    text-shadow: -8px -10px 15px rgb(34, 34, 34);
+}
+
+p {
+    text-align: justify;
+    text-indent: .5in;
+    column-count: 3;
+    column-gap: 40px;
+    column-width: 200px;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: 25px;
+}
