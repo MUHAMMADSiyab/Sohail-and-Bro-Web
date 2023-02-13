@@ -2,8 +2,13 @@ const express = require("express");
 const { body, validationResult } = require("express-validator");
 const router = express.Router();
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
+// Models
 const User = require("../models/User");
+
+// Middleware
+const auth = require("../middleware/auth");
 
 /**
  * Create / Register a user
@@ -36,5 +41,9 @@ router.post(
     return res.json(newUser);
   }
 );
+
+router.get("/test", auth, (req, res) => {
+  return res.json({ msg: "testing authenticated route" });
+});
 
 module.exports = router;
