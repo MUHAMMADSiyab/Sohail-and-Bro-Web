@@ -42,8 +42,4 @@ router.post(
   }
 );
 
-router.get("/test", auth, (req, res) => {
-  return res.json({ msg: "testing authenticated route" });
-});
-
 module.exports = router;

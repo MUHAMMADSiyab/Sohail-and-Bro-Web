@@ -1,11 +1,15 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const config = require("config");
 const { body, validationResult } = require("express-validator");
 const router = express.Router();
 
 // Models
 const User = require("../models/User");
+
+// Middleware
+const auth = require("../middleware/auth");
 
 /**
  * Authenticate/ Login
@@ -51,7 +55,7 @@ router.post(
 
     jwt.sign(
       payload,
-      "mysecretkey",
+      config.get("auth.jwtSecret"),
       {
         expiresIn: "1d",
       },
@@ -63,5 +67,18 @@ router.post(
     );
   }
 );
+
+/**
+ * Get currently authenticated user
+ */
+router.get("/me", auth, async (req, res) => {
+  try {
+    const authUser = await User.findById(req.user.id).select("-password");
+
+    return res.json(authUser);
+  } catch (error) {
+    return res.status(500).json({ msg: "Server error" });
+  }
+});
 
 module.exports = router;
