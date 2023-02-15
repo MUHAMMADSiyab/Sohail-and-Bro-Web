@@ -1,0 +1,53 @@
+button:hover {
+    background-color: green;
+    color: #fff;
+    padding: 20px;
+    font-size: x-large;
+}
+
+button:focus {
+    background-color: #000;
+}
+
+ul li:nth-child(odd) {
+    font-size: x-large;
+    color: orangered;
+}
+
+/* .ch:checked + label {
+    font-size: x-large;
+    color: green;
+    font-weight: bold;
+} */
+
+.ch:not(.red):checked + label {
+    font-size: x-large;
+    color: green;
+    font-weight: bold;
+}
+
+ul::after {
+    content: "Foo";
+    font-size: x-large;
+    color: purple;
+}
+
+ul::before {
+    content: "Bar";
+    font-size: x-large;
+    color: rgb(223, 56, 14);
+}
+
+p::selection {
+    background-color: orangered;
+    color: rgb(100, 128, 255);
+}
+
+p::first-letter {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+p::first-line {
+    font-style: italic;
+}
